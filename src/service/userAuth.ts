@@ -31,7 +31,7 @@ async function atualizarPerfil(senhaAtual: string, senhaNova: string) {
 
     if (error) {
   throw error;
-}
+    }
 
-const emailAtual = user.email;
+    const emailAtual = user?.email;
 }
