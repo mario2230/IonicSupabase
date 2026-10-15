@@ -26,6 +26,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'Perfil',
         component: () => import('@/views/PerfilPage.vue')
+      },
+      {
+        path: 'Cadastro',
+        component: () => import('@/views/CadastroPage.vue')
       }
     ]
   }

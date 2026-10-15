@@ -1,6 +1,9 @@
 import { supabase } from "@/supabase";
 
-export async function signUpNewUser(email: string, senha: string) {
+
+
+export function useAuth() {
+ async function signUpNewUser(email: string, senha: string) {
     const { data, error } = await supabase.auth.signUp({email: email, password: senha});
 
     if(error) {
@@ -11,7 +14,7 @@ export async function signUpNewUser(email: string, senha: string) {
 }
 
 
-export async function signInWithEmail(email: string, senha: string) {
+ async function signInWithEmail(email: string, senha: string) {
     const {data, error} = await supabase.auth.signInWithPassword({
         email: email, password: senha
     })
@@ -25,7 +28,7 @@ export async function signInWithEmail(email: string, senha: string) {
 
 
 
-export async function atualizarSenha(senhaAtual: string, senhaNova: string) {
+ async function atualizarSenha(senhaAtual: string, senhaNova: string) {
     const { data: {user}, error: UserError} = await supabase.auth.getUser()
     if(UserError) {
         throw UserError;
@@ -57,4 +60,9 @@ export async function atualizarSenha(senhaAtual: string, senhaNova: string) {
 }
 
 
-
+return {
+    signUpNewUser,
+    signInWithEmail,
+    atualizarSenha
+}
+}
