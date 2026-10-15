@@ -1,7 +1,6 @@
 import { supabase } from "@/supabase";
-import { IonToast } from "@ionic/vue";
 
-async function signUpNewUser(email: string, senha: string) {
+export async function signUpNewUser(email: string, senha: string) {
     const { data, error } = await supabase.auth.signUp({email: email, password: senha});
 
     if(error) {
@@ -12,7 +11,7 @@ async function signUpNewUser(email: string, senha: string) {
 }
 
 
-async function signInWithEmail(email: string, senha: string) {
+export async function signInWithEmail(email: string, senha: string) {
     const {data, error} = await supabase.auth.signInWithPassword({
         email: email, password: senha
     })
@@ -26,12 +25,36 @@ async function signInWithEmail(email: string, senha: string) {
 
 
 
-async function atualizarPerfil(senhaAtual: string, senhaNova: string) {
-    const { data: {user}, error} = await supabase.auth.getUser()
-
-    if (error) {
-  throw error;
+export async function atualizarSenha(senhaAtual: string, senhaNova: string) {
+    const { data: {user}, error: UserError} = await supabase.auth.getUser()
+    if(UserError) {
+        throw UserError;
     }
 
-    const emailAtual = user?.email;
+    if(!user?.email) {
+        throw new Error("Erro email faltando.");
+    }
+
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: user?.email,
+        password: senhaAtual,
+    });
+
+    if(signInError) {
+        throw new Error("Erro ao validar.");
+    }
+
+    const {data, error} = await supabase.auth.updateUser({
+        password: senhaNova
+    });
+
+    if(error) {
+        throw new Error("Erro ao atualizar sua senha.");
+    }
+
+    return data.user
+
 }
+
+
+
