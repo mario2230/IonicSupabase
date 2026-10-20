@@ -1,2 +1,175 @@
 /* For information on how to create your own theme, please refer to:
 http://ionicframework.com/docs/theming/ */
+
+/* Global Ionic appearance shared by every page. */
+body {
+  font-family: var(--ion-font-family, system-ui, sans-serif);
+  color: var(--ion-text-color);
+  background: var(--ion-background-color);
+}
+
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+ion-toolbar {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+}
+
+ion-title {
+  font-weight: 700;
+}
+
+ion-card {
+  --background: var(--ion-card-background, var(--ion-background-color));
+  margin: 16px;
+  border: 1px solid var(--ion-color-step-150, rgba(120, 120, 150, 0.12));
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(30, 35, 75, 0.08);
+}
+
+ion-button {
+  --border-radius: 12px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+.profile-page {
+  min-height: 100%;
+  padding: max(28px, env(safe-area-inset-top)) 20px 32px;
+  background:
+    radial-gradient(ellipse at top left, rgba(var(--ion-color-primary-rgb), 0.14), transparent 42%),
+    var(--ion-background-color);
+}
+
+.profile-page .page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(100%, 620px);
+  margin: 0 auto 24px;
+}
+
+.profile-page .eyebrow {
+  margin: 0 0 6px;
+  color: var(--ion-color-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.profile-page .page-title {
+  margin: 0;
+  padding: 0;
+  color: var(--ion-text-color);
+  font-size: clamp(1.7rem, 6vw, 2.2rem);
+  font-weight: 750;
+}
+
+.profile-page .logout-button {
+  flex: 0 0 auto;
+  --border-radius: 12px;
+  text-transform: none;
+}
+
+.profile-page .profile-card {
+  width: min(100%, 620px);
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--ion-color-step-150, rgba(120, 120, 150, 0.12));
+  border-radius: 24px;
+  background: var(--ion-card-background, var(--ion-background-color));
+  box-shadow: 0 18px 48px rgba(30, 35, 75, 0.09);
+}
+
+.profile-page .profile-hero {
+  padding: 8px 0 26px;
+}
+
+.profile-page .avatar {
+  width: 112px;
+  height: 112px;
+  margin: 0 auto;
+  border: 4px solid var(--ion-background-color);
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(45, 40, 100, 0.18);
+}
+
+.profile-page .avatar ion-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-page .avatar-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  color: var(--ion-color-primary-contrast);
+  background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary-shade));
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.profile-page .profile-name {
+  margin: 16px 0 4px;
+  padding: 0;
+  color: var(--ion-text-color);
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.profile-page .profile-nickname {
+  display: block;
+  color: var(--ion-color-medium);
+}
+
+.profile-page .profile-details {
+  border-top: 1px solid var(--ion-color-step-150);
+}
+
+.profile-page .profile-details ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --border-color: var(--ion-color-step-150);
+}
+
+.profile-page .profile-details ion-note {
+  max-width: 55%;
+  color: var(--ion-text-color);
+  font-weight: 600;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.profile-page .state-card {
+  min-height: 120px;
+  color: var(--ion-color-medium);
+}
+
+.profile-page .state-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 120px;
+}
+
+.profile-page .error-card {
+  color: var(--ion-color-danger);
+}
+
+@media (max-width: 420px) {
+  .profile-page {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .profile-page .profile-details ion-note {
+    max-width: 48%;
+  }
+}
