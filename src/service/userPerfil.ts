@@ -1,10 +1,9 @@
 import { supabase } from "@/supabase";
-import { P } from "vue-router/dist/index-u4XkZVDG";
 
 export function usePerfil() {
     async function PerfilInfoAdd(nameUser: string, dt_nasc: Date, nicknameUser: string, fotoUrl: string, foto: File) {
         const { data: { user }, error: UserError } = await supabase.auth.getUser();
-
+        
         if (UserError) throw UserError;
         if (!user) throw new Error("Usuário não autenticado");
 
